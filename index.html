@@ -1,13 +1,9 @@
- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>فاتورة التسوق</title>
- <meta property="og:image" content="https://smwknjyb5-glitch.github.io/fact/fact.png">
-<meta property="og:image:width" content="1200">
-<meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="صورة تطبيق  فاتورة التسوق">
     <style>
         body {
             font-family: 'Tahoma', Arial, sans-serif;
@@ -172,8 +168,12 @@
 <div class="invoice-box">
     <h2>فاتورة التسوق </h2>
 
-    <!-- قسم معلومات الزبون والتاريخ -->
+    <!-- قسم معلومات المحل والزبون والتاريخ -->
     <div class="invoice-header">
+        <div>
+            <label for="shopName">اسم المحل:</label>
+            <input type="text" id="shopName" placeholder="أدخل اسم المحل">
+        </div>
         <div>
             <label for="customerName">اسم الزبون:</label>
             <input type="text" id="customerName" placeholder="أدخل اسم الزبون">
@@ -181,6 +181,10 @@
         <div>
             <label for="invoiceDate">تاريخ الفاتورة:</label>
             <input type="date" id="invoiceDate">
+        </div>
+        <div>
+            <label for="invoiceTime">وقت الفاتورة:</label>
+            <input type="time" id="invoiceTime">
         </div>
     </div>
 
@@ -224,6 +228,15 @@
 <script>
     // تعيين تاريخ اليوم تلقائياً عند فتح الصفحة
     document.getElementById('invoiceDate').valueAsDate = new Date();
+
+    // تعيين الوقت الحالي تلقائياً (يمكن تعديله يدوياً)
+    function setCurrentTime() {
+        const now = new Date();
+        const hh = String(now.getHours()).padStart(2, '0');
+        const mm = String(now.getMinutes()).padStart(2, '0');
+        document.getElementById('invoiceTime').value = hh + ':' + mm;
+    }
+    setCurrentTime();
 
     function addRow() {
         const tbody = document.getElementById('rowsContainer');
@@ -286,3 +299,4 @@
 
 </body>
 </html>
+ 
